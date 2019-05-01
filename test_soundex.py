@@ -32,21 +32,16 @@ def test_convert_to_number():
     assert result == ['2', '5', '2']
 
 
-@pytest.mark.skip
+
 @pytest.mark.parametrize('list, expected', [(['1', '2', '3', '4'], ['1', '2', '3', '4']),
                                             (['1', '2', '2', '4'], ['1', '2', '4']),
-                                            (['6', '7', '6', '7', '7', '8'], ['6', '7', '6', '7', '8'])
+                                            (['6', '7', '6', '7', '7', '8'], ['6', '7', '6', '7', '8']),
+                                            (['3', '3'], ['3']),
+                                            (['2'], ['2']),
+                                            ([], ['0', '0', '0'])
                                             ])
 def test_remove_adjacent_letters(list, expected):
 
     result = soundex.remove_adjacent_letters(list)
     assert result == expected
 
-
-def test_remove_adjacent_letters():
-
-    result = soundex.remove_adjacent_letters2(['1', '2', '3'])
-    assert result == ['1', '2', '3']
-
-    result = soundex.remove_adjacent_letters2(['1', '2', '2'])
-    assert result == ['1', '2']
