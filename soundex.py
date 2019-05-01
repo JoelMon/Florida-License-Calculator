@@ -69,7 +69,7 @@ def convert_to_number(name):
     return soundex
 
 
-def remove_adjacent_letters(name):  # BUG: pattern 6,7,6,7,7,8 -> 66778
+def remove_adjacent_letters(name):
     """
 
     :param name: The a name list converted to soudex numbers
@@ -79,39 +79,19 @@ def remove_adjacent_letters(name):  # BUG: pattern 6,7,6,7,7,8 -> 66778
 
     """
 
-    print(f'name is: {name}')
-
+    if name == []:
+        return ['0', '0', '0']
     lastLetter = name[0]
-    for i in name[1:]:  # Starts on index 1 because lastLetter was initialized with index 0
+    for index, element in enumerate(name[1:]):  # Starts on index 1 because lastLetter was initialized with index 0
 
-        if i == lastLetter:
-            name.remove(i)
-            lastLetter = i
+        if element == lastLetter:
+            name.pop(index)
+            lastLetter = element
         else:
-            lastLetter = i
-
-    print(f'Result of name: {name}')
+            lastLetter = element
 
     return name
 
-
-def remove_adjacent_letters2(name):
-    """
-
-    :param name: The a name list converted to soudex numbers
-    :type name: list
-    :return: A list of soundex numbers with all adjacent letters with the same soundex number removed
-    :rtype: list
-
-    """
-    i = 1
-    for element in name:  # ['1', '2', '2']
-        if element == element[i-i]:
-            name.remove(element)
-
-
-
-    return name
 
 def remove_dropped_letters(name):
     """Remove the vowels, y, h, and w from name
