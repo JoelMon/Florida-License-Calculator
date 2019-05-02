@@ -28,12 +28,13 @@ def create_soundex(entered_name):
     initial = []
     name = make_into_list(entered_name)
     initial.append(name[0].upper())  # Append the first letter of the name to initial
-    name.pop(0)  # Remove the first letter from name before processing
+    # name.pop(0)  # Remove the first letter from name before processing
 
-    name = remove_dropped_letters(name)
     name = convert_to_number(name)
     name = remove_adjacent_letters(name)
-    name = stripPad(name)
+    name = remove_first_number(name)
+    name = remove_dropped_letters(name)
+    name = strip_and_pad(name)
     name.insert(0, initial[0])
 
     name = ''.join(name)
@@ -52,19 +53,21 @@ def convert_to_number(name):
     """
 
     soundex = []
-    for i in name:
-        if i in LETTER_REPLACE_1:
+    for letter in name:
+        if letter in LETTER_REPLACE_1:
             soundex.append('1')
-        elif i in LETTER_REPLACE_2:
+        elif letter in LETTER_REPLACE_2:
             soundex.append('2')
-        elif i in LETTER_REPLACE_3:
+        elif letter in LETTER_REPLACE_3:
             soundex.append('3')
-        elif i in LETTER_REPLACE_4:
+        elif letter in LETTER_REPLACE_4:
             soundex.append('4')
-        elif i in LETTER_REPLACE_5:
+        elif letter in LETTER_REPLACE_5:
             soundex.append('5')
-        elif i in LETTER_REPLACE_6:
+        elif letter in LETTER_REPLACE_6:
             soundex.append('6')
+        else:
+            soundex.append(letter)
 
     return soundex
 
@@ -80,18 +83,30 @@ def remove_adjacent_letters(name):
     """
 
     if name == []:
-        return ['0', '0', '0']
+        return []
     lastLetter = name[0]
     for index, element in enumerate(name[1:]):  # Starts on index 1 because lastLetter was initialized with index 0
 
         if element == lastLetter:
             name.pop(index)
             lastLetter = element
+
+        elif element == 'h' or element =='w':  # If the same number is separated by 'w' or 'h' then pop the second dup.
+            if name[index] == name[index+2]:
+                name.pop(index)
+                lastLetter = element
+
         else:
             lastLetter = element
 
     return name
 
+
+def remove_first_number(name):
+
+    name.pop(0)
+
+    return name
 
 def remove_dropped_letters(name):
     """Remove the vowels, y, h, and w from name
@@ -110,8 +125,11 @@ def remove_dropped_letters(name):
     return name
 
 
-def stripPad(name):
-    if len(name) > 3:
+def strip_and_pad(name):
+
+    if len(name) == 0:
+        return ['0', '0', '0']
+    elif len(name) > 3:
         name = name[:3]
     elif len(name) < 3:
         for i in range(3 - len(name)):
