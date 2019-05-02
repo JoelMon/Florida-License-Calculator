@@ -70,7 +70,6 @@ def test_strip_pad(list, expected):
     assert result == expected
 
 
-# @pytest.mark.skip
 @pytest.mark.parametrize('name, sdex', [('Washington', 'W252'),
                                         ('Wu', 'W000'),
                                         ('Joel', 'J400'),

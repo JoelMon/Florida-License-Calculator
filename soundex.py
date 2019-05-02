@@ -12,7 +12,6 @@ LETTER_REPLACE_6 = ['r']
 
 def main():
     name = input("Enter name: ")
-    #   pdb.set_trace()
     print(create_soundex(name))
 
     return 0
@@ -28,7 +27,6 @@ def create_soundex(entered_name):
     initial = []
     name = make_into_list(entered_name)
     initial.append(name[0].upper())  # Append the first letter of the name to initial
-    # name.pop(0)  # Remove the first letter from name before processing
 
     name = convert_to_number(name)
     name = remove_adjacent_letters(name)
