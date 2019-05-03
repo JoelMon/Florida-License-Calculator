@@ -53,44 +53,35 @@ def encode_first_name(name, middle_name):
     name = name.lower()
     middle_name = middle_name.lower()
 
-    name_table = {'albert': 20, 'alice': 20, 'ann': 40,
-                  'anna': 40, 'anne': 40, 'annie': 40,
-                  'arthur': 40, 'bernard': 80, 'bette': 80,
-                  'bettie': 80, 'betty': 80, 'carl': 120,
+    name_table = {'albert'   : 20, 'alice': 20, 'ann': 40, 'anna': 40,
+                  'anne'     : 40, 'annie': 40, 'arthur': 40, 'bernard': 80,
+                  'bette'    : 80, 'bettie': 80, 'betty': 80, 'carl': 120,
                   'catherine': 120, 'charles': 120, 'dorthy': 180,
-                  'edward': 220, 'elizabeth': 220, 'florence': 260,
-                  'donald': 180, 'clara': 140, 'frank': 260,
-                  'george': 300, 'grace': 300, 'harold': 340,
-                  'harriet': 340, 'harry': 360, 'hazel': 360,
-                  'helen': 380, 'henry': 380, 'james': 440,
-                  'jane': 440, 'jayne': 440, 'jean': 460, 'joan': 480,
-                  'john': 460, 'joseph': 480, 'margaret': 560,
-                  'martin': 560, 'marvin': 580, 'mary': 580,
-                  'melvin': 600, 'mildred': 600, 'patricia': 680,
-                  'paul': 680, 'richard': 740, 'robert': 760,
-                  'ruby': 740, 'ruth': 760, 'thelma': 820,
-                  'thomas': 820, 'walter': 900, 'wanda': 900,
-                  'william': 920, 'wilma': 920}
+                  'edward'   : 220, 'elizabeth': 220, 'florence': 260,
+                  'donald'   : 180, 'clara': 140, 'frank': 260, 'george': 300,
+                  'grace'    : 300, 'harold': 340, 'harriet': 340,
+                  'harry'    : 360, 'hazel': 360, 'helen': 380, 'henry': 380,
+                  'james'    : 440, 'jane': 440, 'jayne': 440, 'jean': 460,
+                  'joan'     : 480, 'john': 460, 'joseph': 480,
+                  'margaret' : 560, 'martin': 560, 'marvin': 580, 'mary': 580,
+                  'melvin'   : 600, 'mildred': 600, 'patricia': 680,
+                  'paul'     : 680, 'richard': 740, 'robert': 760, 'ruby': 740,
+                  'ruth'     : 760, 'thelma': 820, 'thomas': 820,
+                  'walter'   : 900, 'wanda': 900, 'william': 920, 'wilma': 920}
 
-    name_initial_table = {'a': 0, 'b': 60, 'c': 100,
-                          'd': 160, 'e': 200, 'f': 240,
-                          'g': 280, 'h': 320, 'i': 400,
-                          'j': 420, 'k': 500, 'l': 520,
-                          'm': 540, 'n': 620, 'o': 640,
-                          'p': 660, 'q': 700, 'r': 720,
-                          's': 780, 't': 800, 'u': 840,
-                          'v': 860, 'w': 880, 'x': 940,
-                          'y': 960, 'z': 980}
+    name_initial_table = {'a': 0, 'b': 60, 'c': 100, 'd': 160, 'e': 200,
+                          'f': 240, 'g': 280, 'h': 320, 'i': 400, 'j': 420,
+                          'k': 500, 'l': 520, 'm': 540, 'n': 620, 'o': 640,
+                          'p': 660, 'q': 700, 'r': 720, 's': 780, 't': 800,
+                          'u': 840, 'v': 860, 'w': 880, 'x': 940, 'y': 960,
+                          'z': 980}
 
-    middle_name_initial_table = {'a': 1, 'b': 2, 'c': 3,
-                                 'd': 4, 'e': 5, 'f': 6,
-                                 'g': 7, 'h': 8, 'i': 9,
-                                 'j': 10, 'k': 11, 'l': 12,
-                                 'm': 13, 'n': 14, 'o': 14,
-                                 'p': 15, 'q': 15, 'r': 16,
-                                 's': 17, 't': 18, 'u': 18,
-                                 'v': 18, 'w': 19, 'x': 19,
-                                 'y': 19, 'z': 19}
+    middle_name_initial_table = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5,
+                                 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,
+                                 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 14,
+                                 'p': 15, 'q': 15, 'r': 16, 's': 17, 't': 18,
+                                 'u': 18, 'v': 18, 'w': 19, 'x': 19, 'y': 19,
+                                 'z': 19}
 
     if name in name_table:
         if middle_name == '':
