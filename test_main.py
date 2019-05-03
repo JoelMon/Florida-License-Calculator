@@ -64,5 +64,16 @@ def test_encode_birth_year(birth_year, expected):
     assert result == expected
 
 
-def test_encode_month_day(month, day, sex):
-    pass
+@pytest.mark.parametrize('month, day, sex, expected', [
+        ('10', '10', 'm', '370'),
+        ('5', '2', 'm', '162'),
+        ('1', '30', 'm', '30' )
+])
+def test_encode_month_day_male(month, day, sex, expected):
+    """
+    return (month - 1) * 40 + day
+
+    """
+
+    result = main.encode_month_day(month, day, sex)
+

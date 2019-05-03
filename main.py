@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+Calculates driver licenses for the state of Florida.
+"""
+
 import soundex
 
 
