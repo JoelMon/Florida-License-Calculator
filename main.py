@@ -123,11 +123,11 @@ def encode_month_day(month, day, sex):
     :rtype: int
 
     """
-    sex.lower()
+
     month = int(month)
     day = int(day)
 
-    if sex == 'm':
+    if sex.lower() == 'm':
         return (month - 1) * 40 + day
     else:
         return (month - 1) * 40 + day + 500
